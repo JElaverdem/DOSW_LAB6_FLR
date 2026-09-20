@@ -1,7 +1,7 @@
 package edu.eci.dosw.oficioya.service;
 import java.util.ArrayList;
 
-public class Worker{
+public class Worker extends User{
   private String oficioPrincipal;
   private ArrayList<String> oficiosSecundarios;
   private ArrayList<String> cobertura;
