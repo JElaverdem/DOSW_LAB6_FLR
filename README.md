@@ -1,15 +1,15 @@
 ¿Para qué sirve el paquete Controller en la estructura Spring Boot?
-Soirfve para recivir y gestionar las peticiones HTTP que hacen los clientes y devolver una respuesta adecudada.
+Sirve para recibir y gestionar las peticiones HTTP que hacen los clientes y devolver una respuesta adecudada.
 ¿Para qué sirve el paquete Service en la estructura Spring Boot?
-centraliza y rganizar la lógica del negocio de la aplicación.
+Centraliza y organizar la lógica del negocio de la aplicación.
 ¿Para qué sirve el paquete Model en la estructura Spring Boot?
-Sirve para lamcenar las clases que representan los datos y la estructura del negocio de la aplciación.
+Sirve para almacenar las clases que representan los datos y la estructura del negocio de la aplicación.
 ¿Para qué sirve el paquete Repository en la estructura Spring Boot?
 Para organizar las interfaces de acceso a datos y comunicación directa con las bases de datos.
 ¿Para qué sirve el paquete Entity en la estructura Spring Boot?
 Sirve  para almacenar las clases de java que representar las tablas de una base de datos relacional.
 ¿Para qué sirve el paquete DTO en la estructura Spring Boot?
-DTO, tamnien comocido como Data Transfer Object, para sirve para organizar las clases simples encargadas de trasnportar datos entre el cliente, o entre las diferentes capas.
+DTO, tambien comocido como Data Transfer Object, sirve para organizar las clases simples encargadas de transportar datos entre el cliente, o entre las diferentes capas.
 ¿Para qué sirve el paquete Exception en la estructura Spring Boot?
 Organizar y centralizar el manejo de errores y excepciones de la aplicación en un solo lugar.
 
