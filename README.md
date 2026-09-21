@@ -1,3 +1,7 @@
+# DOSW_LAB6_FLR
+
+## Diagrama de clases
+![Diagrama](/src/main/resources/docs/images/DiagramaDeClases.png)
 ¿Para qué sirve el paquete Controller en la estructura Spring Boot?
 Sirve para recibir y gestionar las peticiones HTTP que hacen los clientes y devolver una respuesta adecudada.
 ¿Para qué sirve el paquete Service en la estructura Spring Boot?
