@@ -6,6 +6,7 @@ public enum RequestStates{
   RECHAZADA,
   EXPIRADA,
   CUMPLIDA,
-  ELIMINADA
+  ELIMINADA,
+  PENDIENTE
 }
   

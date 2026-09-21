@@ -1,7 +1,7 @@
 package edu.eci.dosw.oficioya.service;
 import java.util.ArrayList;
 
-public abstract class User{
+public class User{
   private String id;
   private String name;
   private String foto;
@@ -11,6 +11,9 @@ public abstract class User{
   private Suscripcion suscripcion;
   private ArrayList<Review> resenasObtenidas;
   private ArrayList<Request> requests;
+  private Contractor contractor;
+  private Worker worker;
+  private Administrator admin;
 
   public User(){
     this.resenasObtenidas = new ArrayList<>();
