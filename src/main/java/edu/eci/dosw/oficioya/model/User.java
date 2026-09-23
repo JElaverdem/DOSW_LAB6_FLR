@@ -1,4 +1,4 @@
-package edu.eci.dosw.oficioya.service;
+package edu.eci.dosw.oficioya.model;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class User {
 
     private String id;
-    private String name;
+    private String nombre;
     private String foto;
     private String correo;
     private String telefono;
@@ -35,12 +35,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getFoto() {
