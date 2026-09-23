@@ -1,4 +1,4 @@
-package edu.eci.dosw.oficioya.service;
+package edu.eci.dosw.oficioya.model;
 
 import java.util.ArrayList;
 
