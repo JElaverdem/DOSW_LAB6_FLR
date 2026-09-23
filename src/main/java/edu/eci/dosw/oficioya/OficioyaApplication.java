@@ -2,9 +2,11 @@ package edu.eci.dosw.oficioya;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import edu.eci.dosw.oficioya.model.LoggingStrategy;
+import edu.eci.dosw.oficioya.model.User;
+
 import java.util.HashMap;
-import edu.eci.dosw.oficioya.service.User;
-import edu.eci.dosw.oficioya.service.LoggingStrategy;
 
 @SpringBootApplication
 public class OficioyaApplication {

@@ -1,4 +1,4 @@
-package edu.eci.dosw.oficioya.service;
+package edu.eci.dosw.oficioya.model;
 
 /**
  * Representa una reseña que un usuario deja sobre otro.
