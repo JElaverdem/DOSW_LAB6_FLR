@@ -1,10 +1,23 @@
 package edu.eci.dosw.oficioya.service;
+
 import java.util.ArrayList;
 
-public class PetCareTaker extends Worker{
-  private ArrayList<String> atiende;
+/**
+ * Representa a un trabajador especializado en el cuidado de mascotas.
+ */
+public class PetCareTaker extends Worker {
 
-  public PetCareTaker(){
-    this.atiende = new ArrayList<>();
-  }
+    private ArrayList<String> atiende;
+
+    public PetCareTaker() {
+        this.atiende = new ArrayList<>();
+    }
+
+    public ArrayList<String> getAtiende() {
+        return atiende;
+    }
+
+    public void setAtiende(ArrayList<String> atiende) {
+        this.atiende = atiende;
+    }
 }
