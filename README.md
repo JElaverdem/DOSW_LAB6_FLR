@@ -5,7 +5,7 @@
 ![Diagrama](/src/main/resources/docs/images/DiagramaDeClases.png)
 
 ## API
-![Diagrama](/src/main/resources/docs/images/API OFICIOYA.png)
+![Diagrama](/src/main/resources/docs/images/API%OFICIOYA.png)
 
 
 ¿Para qué sirve el paquete Controller en la estructura Spring Boot?
