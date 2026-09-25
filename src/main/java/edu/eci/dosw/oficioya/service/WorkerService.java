@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
  
 /**
 * Servicio encargado de la gestión en memoria de los usuarios con rol de Trabajador.
@@ -19,6 +21,7 @@ public class WorkerService {
  
     private final List<User> users = new ArrayList<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
+    private static final Logger log = LoggerFactory.getLogger(WorkerService.class);
  
     public WorkerService() {
         User demo1 = new User();
@@ -50,10 +53,12 @@ public class WorkerService {
     }
  
     public List<User> findAll() {
+        log.debug("Encontrando todos los usuarios");
         return new ArrayList<>(users);
     }
  
     public Optional<User> findById(String id) {
+        log.debug("Encontrando al usuario con id: {}",id);
         return users.stream()
                 .filter(u -> u.getId().equals(id))
                 .findFirst();
@@ -64,12 +69,16 @@ public class WorkerService {
      * campos obligatorios (nombre, correo, telefono, oficio principal o contrasena).
      */
     public Optional<User> create(User user) {
+        log.debug("Creando un nuevo trabajador con nombre: {}",user.getNombre());
         if (!tieneDatosObligatorios(user)) {
+            log.info("El usuario no tiene los datos obligatorios");
             return Optional.empty();
         }
+        log.info("El usuario tiene los datos obligatorios");
         user.setId(String.valueOf(idGenerator.getAndIncrement()));
         user.getWorker().setDisponibilidad(Disponibilidad.ACTIVO);
         users.add(user);
+        log.info("Se ha creado el nuevo worker con id: {}",user.getId());
         return Optional.of(user);
     }
  
@@ -80,56 +89,74 @@ public class WorkerService {
      * - o faltan campos obligatorios en los datos nuevos.
      */
     public Optional<User> update(String id, User userData) {
+        log.debug("Actualizar un usuario con id {} a los datos de un usuario con id {} y nombre {}",id,userData.getId(),userData.getNombre());
         if (!tieneDatosObligatorios(userData)) {
+            log.info("Los nuevos datos no están completos");
             return Optional.empty();
         }
         for (User current : users) {
             if (current.getId().equals(id)) {
+                log.info("El usuario con el id: {} fue encontrado",id);
                 if (current.getWorker().getDisponibilidad() == Disponibilidad.DESACTIVADO) {
+                    log.info("El usuario tiene una disponibilidad que le impide actualizar sus datos");
                     return Optional.empty();
                 }
+                log.info("Se puede realizar la actualización de los datos");
                 current.setNombre(userData.getNombre());
                 current.setCorreo(userData.getCorreo());
                 current.setTelefono(userData.getTelefono());
                 current.setContrasena(userData.getContrasena());
                 current.getWorker().setOficioPrincipal(userData.getWorker().getOficioPrincipal());
+                log.info("Se realizó la actualización completa de los datos");
                 return Optional.of(current);
             }
         }
+        log.info("No fue encontrado el usuario con id: {}",id);
         return Optional.empty();
     }
  
     public Optional<User> inactivar(String id) {
+        log.debug("Desactivar el usuario con id: {}",id);
         for (User user : users) {
             if (user.getId().equals(id)) {
+                log.info("El usuario con id: {} fue encontrado",id);
                 user.getWorker().setDisponibilidad(Disponibilidad.DESACTIVADO);
+                log.info("Se actualizó correctamente la disponibilidad del usuario");
                 return Optional.of(user);
             }
         }
+        log.info("No se encontró el usuario con id: {}",id);
         return Optional.empty();
     }
  
     public Optional<User> autenticar(String correo, String contrasena) {
+        log.debug("Se busca autenticar a un usuario con correo: {}",correo);
         return users.stream()
                 .filter(u -> u.getCorreo().equalsIgnoreCase(correo) && u.getContrasena().equals(contrasena))
                 .findFirst();
     }
  
     private boolean tieneDatosObligatorios(User user) {
+        log.debug("Identificar si el usuario ingresado tiene los datos requeridos para continuar el proceso.");
         if (user == null) {
+            log.info("No se envió un usuario");
             return false;
         }
         if (isBlank(user.getNombre()) || isBlank(user.getCorreo()) ||
             isBlank(user.getTelefono()) || isBlank(user.getContrasena())) {
+            log.info("Tiene nombre: {}, Tiene correo: {}, Tiene telefono: {}, Tiene contraseña: {}",!isBlank(user.getNombre()),!isBlank(user.getCorreo()),!isBlank(user.getTelefono()),!isBlank(user.getContrasena()));
             return false;
         }
         if (user.getWorker() == null || isBlank(user.getWorker().getOficioPrincipal())) {
+            log.info("Es trabajador: {}, Tiene trabajo principal: {}",!(user.getWorker() == null),!isBlank(user.getWorker().getOficioPrincipal()));
             return false;
         }
+        log.debug("Tiene los datos obligatorios");
         return true;
     }
  
     private boolean isBlank(String value) {
+        log.debug("Se revisa si los datos son nulos.");
         return value == null || value.isBlank();
     }
 }
